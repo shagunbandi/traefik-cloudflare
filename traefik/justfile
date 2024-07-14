@@ -1,0 +1,20 @@
+prune:
+    docker system prune -a -f --volumes
+
+logs: 
+    docker compose logs -f
+
+up: 
+    docker compose up --build -d
+    just logs
+
+down:
+    docker compose down
+
+restart:
+    just down
+    just up
+
+ps: 
+    docker compose ps
+

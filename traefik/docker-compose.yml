@@ -1,0 +1,27 @@
+version: '3.7'
+
+networks:
+  geekynavigator_network:
+    external: true
+  pocketfusion_network:
+    external: true
+
+services:
+  traefik:
+    image: traefik:v2.9
+    env_file:
+      - .env
+    networks:
+      - geekynavigator_network
+      - pocketfusion_network
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/etc/traefik/traefik.toml
+      - ./acme.json:/acme.json
+      - ./.htpasswd:/.htpasswd
+    labels:
+      - "traefik.http.middlewares.dmc-auth.basicauth.usersfile=/.htpasswd"
