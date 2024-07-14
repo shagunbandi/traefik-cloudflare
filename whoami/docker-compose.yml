@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  whoami:
+    image: "traefik/whoami"
+    container_name: "whoami"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.geekynavigator.com`)"
+      - "traefik.http.routers.whoami.tls=true"
+      - "traefik.http.services.whoami.loadbalancer.server.port=80"
+      - "traefik.http.routers.whoami.tls.certresolver=cloudflare"
+      - "traefik.docker.network=geekynavigator_network"
+
+networks:
+  geekynavigator_network:
+    external: true
