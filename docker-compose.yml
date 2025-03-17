@@ -17,8 +17,8 @@ services:
       - ./data/traefik.yml:/traefik.yml:ro
       - ./data/acme.json:/acme.json
     environment:
-      - CF_API_EMAIL=${CF_API_EMAIL}
-      - CF_API_KEY=${CF_API_KEY}
+      - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
+      - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
     networks:
       - jellyfin_network
       - geekynavigator_network
@@ -31,6 +31,17 @@ services:
       - "traefik.http.routers.traefik.tls.certresolver=cloudflare"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+
+  dns-updater:
+    build: .
+    environment:
+      - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
+      - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
+      - CLOUDFLARE_ZONE_ID_POCKET=${CLOUDFLARE_ZONE_ID_POCKET}
+      - CLOUDFLARE_ZONE_ID_GEEKY=${CLOUDFLARE_ZONE_ID_GEEKY}
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
 
 networks:
   jellyfin_network:
