@@ -9,8 +9,9 @@ RUN apt-get update && apt-get install -y cron
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Copy the script
+# Copy the script and .env file
 COPY update_dns.py .
+COPY .env /app/.env
 
 # Create the log file
 RUN touch /var/log/cron.log

@@ -4,6 +4,10 @@ import json
 import os
 from datetime import datetime
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv('/app/.env')
 
 # Configure logging
 logging.basicConfig(

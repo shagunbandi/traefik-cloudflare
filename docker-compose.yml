@@ -34,13 +34,6 @@ services:
 
   dns-updater:
     build: .
-    environment:
-      - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
-      - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
-      - POCKETFUSION_ZONE_ID=${POCKETFUSION_ZONE_ID}
-      - GEEKYNAVIGATOR_ZONE_ID=${GEEKYNAVIGATOR_ZONE_ID}
-      - POCKETFUSION_RECORD=${POCKETFUSION_RECORD}
-      - GEEKYNAVIGATOR_RECORD=${GEEKYNAVIGATOR_RECORD}
     volumes:
       - ./logs:/app/logs
     restart: unless-stopped
