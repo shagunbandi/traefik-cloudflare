@@ -23,6 +23,7 @@ services:
       - jellyfin_network
       - geekynavigator_network
       - mortgage_network
+      - tales_network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=websecure"
@@ -42,6 +43,8 @@ networks:
   jellyfin_network:
     external: true
   geekynavigator_network:
-    external: true 
+    external: true
   mortgage_network:
+    external: true
+  tales_network:
     external: true
