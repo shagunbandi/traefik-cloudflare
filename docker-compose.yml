@@ -24,6 +24,7 @@ services:
       - geekynavigator_network
       - mortgage_network
       - tales_network
+      - nitya_network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=websecure"
@@ -47,4 +48,6 @@ networks:
   mortgage_network:
     external: true
   tales_network:
+    external: true
+  nitya_network:
     external: true
