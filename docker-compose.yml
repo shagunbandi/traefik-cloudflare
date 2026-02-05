@@ -26,6 +26,7 @@ services:
       - tales_network
       - nitya_network
       - aman_brass_network
+      - voyager_network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=websecure"
@@ -53,4 +54,6 @@ networks:
   nitya_network:
     external: true
   aman_brass_network:
+    external: true
+  voyager_network:
     external: true
