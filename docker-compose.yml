@@ -57,3 +57,5 @@ networks:
     external: true
   voyager_network:
     external: true
+  kutumb_network:
+    external: true
