@@ -27,6 +27,7 @@ services:
       - nitya_network
       - aman_brass_network
       - voyager_network
+      - kutumb_network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=websecure"
