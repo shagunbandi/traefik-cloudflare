@@ -28,6 +28,7 @@ services:
       - aman_brass_network
       - voyager_network
       - kutumb_network
+      - openclaw_network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=websecure"
@@ -59,4 +60,6 @@ networks:
   voyager_network:
     external: true
   kutumb_network:
+    external: true
+  openclaw_network:
     external: true
